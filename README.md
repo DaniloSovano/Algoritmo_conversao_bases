@@ -2,7 +2,9 @@ O Presente algoritmo le cada linha de um arquivo de texto escrito da seguinte fo
 
 
 2 3 0
+
 11 11 99
+
 10 2 100
 
 onde o primeiro valor é a base de entrada, o segundo é a base de saída e o terceiro é o numero a ser convertido.
