@@ -1,4 +1,7 @@
 O Presente algoritmo le cada linha de um arquivo de texto escrito da seguinte forma:
+
+
+
 2 3 0
 11 11 99
 10 2 100
