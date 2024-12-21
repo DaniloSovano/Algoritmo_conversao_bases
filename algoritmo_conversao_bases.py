@@ -1,22 +1,22 @@
 # Lista de caracteres para bases até 62 (0-9, A-Z, a-z)
 lista = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
-                  'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 
-                  'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 
-                  'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 
-                  'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 
-                  'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 
-                  'y', 'z']
+        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 
+        'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 
+        'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 
+        'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 
+        'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 
+        'y', 'z']
 
 # Função para converter um número de qualquer base para a base 10
 def converter_decimal(numero_entrada, base):
     numero_entrada = list(numero_entrada)
     resultado = 0  # Variável para acumular o valor final
-
+    tamanho = len(numero_entrada)
     # Verificar se o número é negativo
     if numero_entrada[0] == '-':
         return "???"  
 
-    for i in range(len(numero_entrada)):
+    for i in range(tamanho):
         aux = numero_entrada[i]
         
         # Verificar o valor do caractere na base correspondente
@@ -29,8 +29,8 @@ def converter_decimal(numero_entrada, base):
         if numero >= base:
             return "???" 
         
-        # Atualizar o resultado de acordo com a posição e a base
-        resultado = resultado * base + numero
+        expoente = (tamanho - 1) - i  
+        resultado += numero * (base ** expoente)
     
     return resultado
 
@@ -49,15 +49,9 @@ def converter_base(base_saida, numero_convertido_base10):
 
 # Função principal para processar as entradas a partir de um arquivo
 def entrada(arquivo_nome):
-    try:
-        with open(arquivo_nome, 'r') as file:
-            linhas = file.readlines()  # Lê todas as linhas do arquivo
-    except FileNotFoundError:
-        print(f"Erro: O arquivo {arquivo_nome} não foi encontrado.")
-        return
-    except PermissionError:
-        print(f"Erro: Não tem permissão para acessar o arquivo {arquivo_nome}.")
-        return
+    
+    with open(arquivo_nome, 'r') as file:
+        linhas = file.readlines()  # Lê todas as linhas do arquivo
 
     for linha in linhas:
         linha = linha.strip()  # Remove espaços extras e quebras de linha
@@ -97,4 +91,3 @@ def entrada(arquivo_nome):
             print("???")
 
 entrada('baseconv.txt')
-
